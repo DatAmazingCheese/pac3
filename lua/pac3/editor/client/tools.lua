@@ -306,10 +306,15 @@ if (first() | dupefinished()) {
 	   #- CN++, CT[CN, table] = table(Index, Clip Index, Pos, Ang)
 
 	   #- Editing holograms
-	   #- Scroll down to the bottom of the code to find where to insert your holo() code. In order to reference indexes
-	   #- add a ", I_HologramName"" to the end of that holograms data line with "HologramName" being of your choosing.
+	   #- In order to edit your holograms after spawning, you'll first need to reference the index of the holograms you wish to edit.
+	   #- To do this, add ", I_HologramName = I" to the end of that hologram's data line with "HologramName" being a name of your choosing.
 	   #- Finally add this to a @persist directive eg "@persist [I_HologramName]", now you can address this in your holo() code.
-	   #- For example, "holoBodygroup(I_HologramName, 2, 3)" which would be put in the "InitPostSpawn" section.
+	   #- To actually edit holograms after spawning, you need to place the code you wish to run at the bottom of this file in the "InitPostSpawn" section.
+	   #- For example:
+
+	   #- @persist [I_CubeParent]
+	   #- I++, HN++, HT[HN,table] = table(I, Base, 0, vec(0), ang(0), vec(1), "cube", "", vec4(255, 255, 255, 255), 0), I_CubeParent = I
+	   #- holoBodygroup(I_CubeParent, 1, 2)
 
 	   #- Advanced functionality
 	   #- If you wish to take this system to the next level, you can. Instead of using multiple e2s for each "set" of holograms,
@@ -419,12 +424,12 @@ elseif (CoreStatus == "InitSpawn") {
     loadContraption()
 }
 elseif (CoreStatus == "InitPostSpawn") {
-    #- This is your "if (first())" section of the code.
+    #- This is your "if (first())" section of the code. This is where you put your code for editing holograms.
 
     CoreStatus = "RunThisCode"
 }
 elseif (CoreStatus == "RunThisCode") {
-    #- This is your "interval()" ran section of the code.
+    #- This is your "interval()" ran section of the code. This is where you put your code for animating holograms.
 
     runOnTick(0)
 }]]

@@ -313,7 +313,7 @@ if (first() | dupefinished()) {
 	   #- For example:
 
 	   #- @persist [I_CubeParent]
-	   #- I++, HN++, HT[HN,table] = table(I, Base, 0, vec(0), ang(0), vec(1), "cube", "", vec4(255, 255, 255, 255), 0), I_CubeParent = I
+	   #- I++, HN++, HT[HN,table] = table(I, Base, Base, 0, vec(0), ang(0), vec(1), "cube", "", vec4(255, 255, 255, 255), 0), I_CubeParent = I
 	   #- holoBodygroup(I_CubeParent, 1, 2)
 
 	   #- Advanced functionality
